@@ -34,15 +34,12 @@ session_destroy();
 }
 
     if ( isset( $_POST['todoInput'] ) && !empty( $_POST['todoInput'] ) ) {
+        $error[]="";
       $todoInput =  $_POST['todoInput']; 
     } else {
       $error[] = 'To Do input field can not be empty'; 
     }
     
-    //session_unset();
-
-   
-
     // Make sure we have values we can use.
     
       // Check if our result is available.
@@ -57,30 +54,19 @@ session_destroy();
         );
       }
 
-      if ( isset( $completed ) ) {
         // If we want to push to an array... it needs to be an array! Let's make sure it is the proper data-type if it isn't already defined.
-        if ( !isset( $_SESSION['completedSession'] ) || empty( $_SESSION['completedSession'] ) ) {
-          $_SESSION['completedSession'] = array();
-        }
-        array_push( // Add this result to the 'calc-history' session array.
-          $_SESSION['completedSession'],
-          "$historyItem"
-        );
-      }
-
-      if ( isset( $historyItem ) ) {
-        // If we want to push to an array... it needs to be an array! Let's make sure it is the proper data-type if it isn't already defined.
-        if ( !isset( $_SESSION['historyItemSession'] ) || empty( $_SESSION['historyItemSession'] ) ) {
-          $_SESSION['historyItemSession'] = array();
-        }
-        array_push( // Add this result to the 'calc-history' session array.
-          $_SESSION['historyItemSession'],
-          "$historyItem"
-        );
-      }
-
-    
-  ?>
+        if ( isset( $_POST['completed']) ) {
+            // If we want to push to an array... it needs to be an array! Let's make sure it is the proper data-type if it isn't already defined.
+            if ( !isset( $_SESSION['historyItemSession'] ) || empty( $_SESSION['historyItemSession'] ) ) {
+              $_SESSION['historyItemSession'] = array();
+            }
+            array_push( // Add this result to the 'calc-history' session array.
+              $_SESSION['historyItemSession'],
+              "$historyItem"
+            );
+          }
+      
+?>
  
 
   <form action="TODOLIST.php" method="POST">
@@ -123,12 +109,12 @@ if ( isset( $_SESSION['todoListItemSession'] ) && !empty( $_SESSION['todoListIte
 
 <h2>COMPLETED TO DO LIST</h2>
 <?php
-if ( isset( $_SESSION['completedSession'] ) && !empty( $_SESSION['completedSession'] ) ) {
+if ( isset( $_SESSION['historyItemSession'] ) && !empty( $_SESSION['historyItemSession'] ) ) {
     ?>
      <ul>
-        <?php foreach ( $_SESSION['completedSession'] as $completedItem ) : ?>
+        <?php foreach ( $_SESSION['historyItemSession'] as $historyItem ) : ?>
           <li>
-            <?php echo $completedItem; ?>
+            <?php echo $historyItem; ?>
           </li>
         <?php endforeach; ?>
       </ul>

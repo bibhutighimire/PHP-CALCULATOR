@@ -69,9 +69,14 @@ nav ul {
   button:hover {
     background-color: #111;
   }
-
+  .toDoListUL ul{
+      margin: 0px;
+      padding:0px;
+  }
   .toDoListUL ul li {
       list-style: none;
-      margin-bottom: 20px;
+      margin: 0 0 20px 0;
+      border-bottom: 2px dotted black;
+      padding: 0 0 15px 0;
       
   }
