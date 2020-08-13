@@ -7,5 +7,7 @@
     <script type="text/javascript" src="js/scripts.js" defer></script>
     <title><?php echo $GLOBALS['title']; ?> | BIBHUTI</title>
 </head>
+<div id="container">
+<?php include 'templates/nav.php'; ?>
 <body>
    
