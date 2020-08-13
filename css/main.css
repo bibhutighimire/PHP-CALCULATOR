@@ -5,9 +5,10 @@ html {
     
 }
 #container {
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
     border: 1px solid rgb(170, 168, 168);
+    padding: 30px;
 }
 
 h1 {
@@ -23,3 +24,54 @@ footer p{
     font-size: large;
     justify-content: right;
 }
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  nav ul li {
+    float: left;
+  }
+  
+  nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  nav ul li a:hover {
+    background-color: #111;
+  }
+
+  form label {
+      font-size: larger;
+      font-weight: bold;
+  }
+
+  form input {
+      height: 35px;
+      border: 2px solid black;
+      width: 500px;
+  }
+
+  button {
+    background-color: #333;
+    padding: 10px;
+    color: white;
+    font-size: large;
+    margin: 15px 15px 0 0;
+  }
+  button:hover {
+    background-color: #111;
+  }
+
+  .toDoListUL ul li {
+      list-style: none;
+      margin-bottom: 20px;
+      
+  }

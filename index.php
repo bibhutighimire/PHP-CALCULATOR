@@ -2,7 +2,7 @@
 // Start our session, and declare our history function.
 include 'includes/calc-history.php';
 global $title; 
-$title = 'TO-DO LIST'; // $GLOBALS['title'] = 'TO DO LIST';
+$title = 'WELCOME TO "TO-DO LIST" APPLICATION'; // $GLOBALS['title'] = 'TO DO LIST';
 
 include 'templates/header.php';
 ?>
