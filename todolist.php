@@ -8,7 +8,6 @@ include 'templates/header.php';
 
   <h1><?php echo $title; ?></h1>
 
-  <!-- <?php include 'templates/navigation.php'; ?> -->
 
   <?php
     // $_POST $_GET
@@ -24,10 +23,10 @@ include 'templates/header.php';
      * isset() Checks to see if a value is declared / defined at all.
      * empty() Checks to see if a value is an empty string, zero, or the array has no elements.
      */
-    if ( isset( $_GET['num1'] ) && !empty( $_POST['num1'] ) ) {
-      $num1 = (integer) $_POST['num1']; // We can type-cast this to a number using (integer) before the value. It does its best to convert to integer in this case.
+    if ( isset( $_GET['todoInput'] ) && !empty( $_POST['todoInput'] ) ) {
+      $todoInput =  $_POST['todoInput']; 
     } else {
-      $error[] = 'First operand is missing.'; // array_push( $warnings, 'New warning.' )
+      $error[] = 'To Do input field can not be empty'; 
     }
     
 
@@ -36,18 +35,17 @@ include 'templates/header.php';
       // Check if our result is available.
       if ( isset( $result ) ) {
         // If we want to push to an array... it needs to be an array! Let's make sure it is the proper data-type if it isn't already defined.
-        if ( !isset( $_SESSION['calc-history'] ) || empty( $_SESSION['calc-history'] ) ) {
-          $_SESSION['calc-history'] = array();
+        if ( !isset( $_SESSION['todoList'] ) || empty( $_SESSION['todoList'] ) ) {
+          $_SESSION['todoList'] = array();
         }
         array_push( // Add this result to the 'calc-history' session array.
-          $_SESSION['calc-history'],
-          "$num1 $operator $num2 = $result"
+          $_SESSION['todoList'],
+          "$todoInput"
         );
       }
     }
   ?>
 
-  <h2>PHP Calculator Form</h2>
   <form action="calc.php" method="GET">
     <?php if ( !empty( $error ) ) : ?>
       <ul>
@@ -58,11 +56,12 @@ include 'templates/header.php';
         <?php endforeach; ?>
       </ul>
     <?php endif; ?>
-    <label for="num1">
-      First Operand:
-      <input type="number" name="num1" id="num1">
+    <label for="todoInput">
+     Enter your new To Do's:
+      <input type="text" name="todoInput" id="todoInput">
     </label>
-    
+    <button>Add To list</button>
+    <button>Reset</button>
   </form>
 
 <?php include 'templates/footer.php';
